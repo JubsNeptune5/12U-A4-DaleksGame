@@ -17,6 +17,7 @@ public class CatchGame {
     private Dalek sec = new Dalek((int) (Math.random() * (12)), (int) (Math.random() * (12)));
     private Dalek thay = new Dalek((int) (Math.random() * (12)), (int) (Math.random() * (12)));
     private Dalek caah = new Dalek((int) (Math.random() * (12)), (int) (Math.random() * (12)));
+    private int move = 0;
 
     /**
      * The constructor for the game. Use it to initialize your game variables.
@@ -54,6 +55,9 @@ public class CatchGame {
             sec.advanceTowards(tennent);
             thay.advanceTowards(tennent);
             caah.advanceTowards(tennent);
+            //add to counter 
+            move++;
+            b.displayMessage("Moves: "+move);
 
             //Make new points
             b.putPeg(Color.GREEN, tennent.getRow(), tennent.getCol());
@@ -63,7 +67,7 @@ public class CatchGame {
 
             //Check if the doctor regenerated from each dalek to make sure the game didn't end
             if (didRegenerate(sec) == true || didRegenerate(thay) == true || didRegenerate(caah) == true) {
-                b.displayMessage("You have lost the game");
+                b.displayMessage("You have lsot the game in "+move+" Moves");
                 break;
             }
             //Check if daleks collided with each other
@@ -126,7 +130,7 @@ public class CatchGame {
     public boolean didWin() {
         //Check if all the dalkes are at one crash site
         if (sec.getRow() == thay.getRow() && sec.getRow() == caah.getRow() && sec.getCol() == thay.getCol() && sec.getCol() == caah.getCol()) {
-            b.displayMessage("Congradulations, you have defeated the Daleks ");
+            b.displayMessage("Congrats, you have defeated the Daleks in "+move+" Moves");
             return true;
         }
         return false;
