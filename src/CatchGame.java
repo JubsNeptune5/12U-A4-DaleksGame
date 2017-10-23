@@ -126,7 +126,7 @@ public class CatchGame {
     public boolean didWin() {
         //Check if all the dalkes are at one crash site
         if (sec.getRow() == thay.getRow() && sec.getRow() == caah.getRow() && sec.getCol() == thay.getCol() && sec.getCol() == caah.getCol()) {
-            b.displayMessage("Congradulations, you have defeated the daleks ");
+            b.displayMessage("Congradulations, you have defeated the Daleks ");
             return true;
         }
         return false;
