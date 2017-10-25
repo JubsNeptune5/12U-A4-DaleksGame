@@ -32,17 +32,12 @@ public class Doctor {
     public void move(int newRow, int newCol) {
         //When the click is kept in the one square radius around the doctor,and if the click is on the doctor
         if (newRow == this.row + 1 || newRow == this.row - 1 || newRow == this.row || newCol == this.col + 1 || newCol == this.col - 1 || newCol == this.col) {
-
             this.row = newRow;
             this.col = newCol;
-
-
-
         } else {
             this.row = (int) (Math.random() * 12);
             this.col = (int) (Math.random() * 12);
         }
-
     }
 
     /**
