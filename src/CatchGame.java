@@ -43,31 +43,9 @@ public class CatchGame {
     public void playGame() {
 
         while (true) {
-            //Recieve click from user
-            Coordinate click = b.getClick();//Rem,ove tuhe pegs to move new ones
-            b.removePeg(tennent.getRow(), tennent.getCol());
-            b.removePeg(sec.getRow(), sec.getCol());
-            b.removePeg(thay.getRow(), thay.getCol());
-            b.removePeg(caah.getRow(), caah.getCol());
-
-            //Set new coordinates of the doctor and the daleks
-            tennent.move(click.getRow(), click.getCol());
-            sec.advanceTowards(tennent);
-            thay.advanceTowards(tennent);
-            caah.advanceTowards(tennent);
-            //add to counter 
-            move++;
-            b.displayMessage("Moves: "+move);
-
-            //Make new points
-            b.putPeg(Color.GREEN, tennent.getRow(), tennent.getCol());
-            b.putPeg(Color.BLACK, sec.getRow(), sec.getCol());
-            b.putPeg(Color.BLACK, thay.getRow(), thay.getCol());
-            b.putPeg(Color.BLACK, caah.getRow(), caah.getCol());
-
             //Check if the doctor regenerated from each dalek to make sure the game didn't end
             if (didRegenerate(sec) == true || didRegenerate(thay) == true || didRegenerate(caah) == true) {
-                b.displayMessage("You have lsot the game in "+move+" Moves");
+                b.displayMessage("You have lsot the game in " + move + " Moves");
                 break;
             }
             //Check if daleks collided with each other
@@ -79,8 +57,29 @@ public class CatchGame {
             if (didWin() == true) {
                 break;
             }
-        }
-    }
+        
+        //Recieve click from user
+        Coordinate click = b.getClick();//Rem,ove tuhe pegs to move new ones
+        b.removePeg(tennent.getRow(), tennent.getCol());
+        b.removePeg(sec.getRow(), sec.getCol());
+        b.removePeg(thay.getRow(), thay.getCol());
+        b.removePeg(caah.getRow(), caah.getCol());
+
+        //Set new coordinates of the doctor and the daleks
+        tennent.move(click.getRow(), click.getCol());
+        sec.advanceTowards(tennent);
+        thay.advanceTowards(tennent);
+        caah.advanceTowards(tennent);
+        //add to counter 
+        move++;
+        b.displayMessage("Moves: " + move);
+
+        //Make new points
+        b.putPeg(Color.GREEN, tennent.getRow(), tennent.getCol());
+        b.putPeg(Color.BLACK, sec.getRow(), sec.getCol());
+        b.putPeg(Color.BLACK, thay.getRow(), thay.getCol());
+        b.putPeg(Color.BLACK, caah.getRow(), caah.getCol());
+    }}
 
     /**
      * method to see if the doctor has collided with a dalek
@@ -130,7 +129,7 @@ public class CatchGame {
     public boolean didWin() {
         //Check if all the dalkes are at one crash site
         if (sec.getRow() == thay.getRow() && sec.getRow() == caah.getRow() && sec.getCol() == thay.getCol() && sec.getCol() == caah.getCol()) {
-            b.displayMessage("Congrats, you have defeated the Daleks in "+move+" Moves");
+            b.displayMessage("Congrats, you have defeated the Daleks in " + move + " Moves");
             return true;
         }
         return false;
