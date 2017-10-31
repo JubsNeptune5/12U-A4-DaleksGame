@@ -45,7 +45,7 @@ public class CatchGame {
         while (true) {
             //Check if the doctor regenerated from each dalek to make sure the game didn't end
             if (didRegenerate(sec) == true || didRegenerate(thay) == true || didRegenerate(caah) == true) {
-                b.displayMessage("You have lsot the game in " + move + " Moves");
+                b.displayMessage("You have lost the game in " + move + " Moves");
                 break;
             }
             //Check if daleks collided with each other
