@@ -115,6 +115,7 @@ public class CatchGame {
             b.removePeg(c.getRow(), c.getCol());
             //Add peg for a crash site
             b.putPeg(Color.RED, a.getRow(), a.getCol());
+            b.putPeg(Color.RED, c.getRow(), c.getCol());
             //set the crash to true on the daleks
             a.crash();
             c.crash();
